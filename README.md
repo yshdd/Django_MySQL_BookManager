@@ -8,10 +8,11 @@
 3. ダミーデータを入力してDjangoで扱えるアプリの作成
 
 ## 1. 管理したいデータ
-<img width="607" src="https://user-images.githubusercontent.com/70735561/194019097-66bcca77-9290-4d87-aa52-574ac844c398.png">
+<img width="600" src="https://user-images.githubusercontent.com/70735561/194019097-66bcca77-9290-4d87-aa52-574ac844c398.png">
 
 ##　データベースの正規化後のデータの関連性
-![IMG_96328C3753A0-1.jpeg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0f2d26e8-69be-410b-a35d-8436365bf151/IMG_96328C3753A0-1.jpeg)
+<img width="600" src="https://user-images.githubusercontent.com/70735561/194023097-1e3d6a77-6491-4e6b-836f-325d34e329da.png">
+
 
 ## アプリケーションの画面
 <img width="800" src="https://user-images.githubusercontent.com/70735561/194019610-423cb88c-442e-42f1-9a10-65f9b9fe71e6.png">
