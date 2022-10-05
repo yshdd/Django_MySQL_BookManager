@@ -10,7 +10,7 @@
         <a href="{% url 'index' %}">ホームに戻る</a>
         <h2 class="text-center">借りる</h2>
         
-        <form action="addRecord" name="addRecord" method="POST">
+        <form action="addRecord" name="addRecord" method="POST" class="text-center">
             {% csrf_token %}
             <div>
             <label>{{ form.stuid.label }} {{ form.stuid }}</label>

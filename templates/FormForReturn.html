@@ -11,7 +11,7 @@
         <a href="{% url 'index' %}">ホームに戻る</a>
         <h2 class="text-center">返却する</h2>
         
-        <form action="deleteRecord" name="deleteRecord" method="POST">
+        <form action="deleteRecord" name="deleteRecord" method="POST" class="text-center">
             {% csrf_token %}
             <div>
             <label>{{ form.rentalid.label }} {{ form.rentalid }}</label>
