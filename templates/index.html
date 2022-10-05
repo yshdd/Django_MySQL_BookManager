@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Django+MySQL</title>
+        <meta charset="utf-8"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+    </head>
+    <body>
+        
+        <h2 class="text-center my-5">書籍貸出履歴の管理</h2>
+        <div class="row my-5">
+            
+            <div class="col">
+                <form action="callRecordForm" name="createRecord" class="text-center">
+                    <input type="submit" value="借りる" class="btn btn-secondary">
+                </form>
+            </div>
+            <div class="col">
+                <form action="callReturnForm" name="deleteRecord" class="text-center">
+                    <input type="submit" value="返却する" class="btn btn-secondary">
+                </form>
+            </div>
+            <div class="col">
+                <form action="callUpdateForm" name="updateRecord" class="text-center">
+                    <input type="submit" value="変更する" class="btn btn-secondary">
+                </form>
+            </div>
+        </div>
+
+        
+        
+        <div class="row my-5">
+            
+            <div class="col">
+                <h3 class="text-center">貸出状況</h3>
+                {% for data in alldata %}
+                <div class="card text-center border-dark my-3">
+                    <h4 class="bg-primary text-white">貸出ID. {{data.id}}</h4>
+                    <ul class="list-unstyled">
+                        <li >借りた日: {{ data.no.date | date:"Y/m/d" }}</li>
+                        <li >{{ data.no.stuid.stuname}}, 書籍名: {{data.bookid.bookname}}</li>
+                        <li> </li>
+                        <!-- {% if data.bookid.returned %}
+                        
+                        <li >返却済</li>
+                        {% else %}
+                        <li >貸出中</li>
+                        {% endif %} -->
+                        </ul>
+                    <!-- <p>====================================</p> -->
+                </div>
+
+                {% endfor %}
+            </div>
+
+            <div class="col">
+                <h3 class="text-center">部屋にある本</h3>
+                {% for book in allbooks %}
+                {% if book.returned %}
+                <div class="card text-center border-dark my-3">
+                    <h4 class="bg-success text-white">書籍ID: {{ book.bookid }}</h4>
+                    <ul class="list-unstyled ">
+                        <li> 書籍名: {{ book.bookname}}</li>
+                        
+                        <!-- <li>ステータス: {{data.bookid.returned}}</li> -->
+                        <li>返却済</li>
+                        
+                        </ul>
+                    <!-- <p>====================================</p> -->
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            
+        </div>
+        
+
+    </body>
+</html>

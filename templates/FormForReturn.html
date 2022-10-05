@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Django+MySQL</title>
+        <meta charset="utf-8"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+</head>
+    </head>
+    <body>
+        <a href="{% url 'index' %}">ホームに戻る</a>
+        <h2 class="text-center">返却する</h2>
+        
+        <form action="deleteRecord" name="deleteRecord" method="POST">
+            {% csrf_token %}
+            <div>
+            <label>{{ form.rentalid.label }} {{ form.rentalid }}</label>
+            <label>{{ form.bookid.label }} {{ form.bookid }}</label>
+            
+
+            <input type="submit" value="返却処理を確定する">
+            </div>
+        </form>
+    
+        <div class="col my-5">
+            <h3 class="text-center">貸出状況</h3>
+            {% for data in alldata %}
+            <div class="card text-center border-dark my-3">
+                <h4 class="bg-primary text-white">貸出ID. {{data.id}}</h4>
+                <ul class="list-unstyled">
+                    <li >借りた日: {{ data.no.date | date:"Y/m/d" }}</li>
+                    <li >{{ data.no.stuid.stuname}}, 書籍名: {{data.bookid.bookname}}</li>
+                    <li> </li>
+                    <!-- {% if data.bookid.returned %}
+                    
+                    <li >返却済</li>
+                    {% else %}
+                    <li >貸出中</li>
+                    {% endif %} -->
+                    </ul>
+                <!-- <p>====================================</p> -->
+            </div>
+
+            {% endfor %}
+        </div>
+    </body>
+</html>

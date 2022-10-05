@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Django+MySQL</title>
+        <meta charset="utf-8"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+</head>
+    </head>
+    <body>
+        <a href="{% url 'index' %}">ホームに戻る</a>
+        <h3 class="text-center">登録内容の変更</h3>
+        <p>下記項目を記入(一部だけ変更したい場合も全て記入)</p>
+        <form action="updateRecord" name="updateRecord" method="POST">
+            {% csrf_token %}
+            <div>
+                
+                    <p>変更したい貸出ID</p>
+                    <label>{{ form.rentalid.label }} {{ form.rentalid }}</label>
+                
+                
+                <label>{{ form.stuid.label }} {{ form.stuid }}</label>
+                <label>{{ form.stuname.label }} {{ form.stuname }}</label>
+                <label>{{ form.date.label }} {{ form.date }}</label>
+                
+                
+                    <label>{{ form.book.label }} {{ form.book }}</label>
+                
+            <input type="submit" value="送信">
+            </div>
+        </form>
+        
+        
+        <div class="col my-5">
+            <h3 class="text-center">貸出状況</h3>
+            {% for data in alldata %}
+            <div class="card text-center border-dark my-3">
+                <h4 class="bg-primary text-white">貸出ID. {{data.id}}</h4>
+                <ul class="list-unstyled">
+                    <li >借りた日: {{ data.no.date | date:"Y/m/d" }}</li>
+                    <li >{{ data.no.stuid.stuname}}, 書籍名: {{data.bookid.bookname}}</li>
+                    <li> </li>
+                    <!-- {% if data.bookid.returned %}
+                    
+                    <li >返却済</li>
+                    {% else %}
+                    <li >貸出中</li>
+                    {% endif %} -->
+                    </ul>
+                <!-- <p>====================================</p> -->
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </body>
+</html>
